@@ -24,7 +24,7 @@ body {
     padding: 5px;
 }
 
-h1,h2,h3,h4,h5 {padding: 0; margin: 0;}
+h1,h2,h3,h4,h5 {padding: 0; margin: 0; font-weight: 500;}
 
 h4 {color: var(--secondary);}
 
@@ -121,6 +121,7 @@ h4 {color: var(--secondary);}
 .green {color: var(--green)!important;}
 
  /* Popup */
+
  .jumbo {
     font-size: 5em;
     line-height: 0.9;
@@ -131,7 +132,8 @@ h4 {color: var(--secondary);}
     font-size: 0.4em;
     color: var(--secondary);
 }
- .modal {
+
+.bonus {
     display: none;
     position: fixed;
     z-index: 1;
@@ -139,15 +141,46 @@ h4 {color: var(--secondary);}
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.8);
   }
-  
-  .modal-content {
+.bonus-content {
+    margin: 100% 0 0 auto;
+    padding: 100px;
+    width: 15%;
+    color: var(--bg);
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+.bonus-content > div {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--black);
+    color: var(--text);
+    margin-bottom: 50px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    position: fixed;
     font-size: 5rem;
     font-weight: 600;
     background-color: var(--bg);
-    margin: 50% auto; /* Set height for popup */
+    top: 30%;
+    left: 50%;
     padding: 20px;
     border: 1px solid var(--secondary);
     width: 80%; /* Could be more or less, depending on screen size */
-  }
+    transform: translate(-50%, -30%);
+
+}

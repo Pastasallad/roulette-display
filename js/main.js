@@ -17,6 +17,7 @@ let spins = [];
 const recentSpins = document.getElementById('spins');
 const bets = document.getElementById('bets');
 const popup = document.getElementById('popup');
+const bonus = document.getElementById('bonus');
 const odd = document.getElementById('odd');
 const even = document.getElementById('even');
 const red = document.getElementById('red');
@@ -83,12 +84,14 @@ function noMoreBets() {
     } else {
         bets.classList.add('no-more');
         bets.innerHTML = 'NO MORE BETS';
+        //bonus.style.display = 'block';
     }
 }
 
 function moreBets() {
     bets.classList.remove('no-more');
     bets.innerHTML = 'PLACE YOUR BETS';
+    //bonus.style.display = 'none';
 }
 
 function showPopup() {
@@ -98,6 +101,7 @@ function showPopup() {
 
 function hidePopup() {
     popup.style.display = 'none';
+    //bonus.style.display = 'none';
     updateDisplay();
     moreBets();
 }
