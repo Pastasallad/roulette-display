@@ -1,8 +1,8 @@
 :root {
     --orange: #FAB700;
     --bg: #000;
-    --secondary: #555555;
-    --text: #fff;
+    --secondary: #555;
+    --text: #ffffffc4;
     --red: #b10808;
     --green: #028602;
     --black: #d3c495;
@@ -45,39 +45,38 @@ h4 {color: var(--secondary);}
 }
 
 .number {
-    background-color: var(--cold);
     color: var(--bg);
     font-size: 2em;
     font-weight: 600;
 }
 
-.right .number {
+.number > div {
+    display: inline-block;
+    width: 121px;
+    margin-top: 20px;
+    border-radius: 25px;
+    padding: 0 0 5px 0;
+    background-color: var(--cold);
+}
+
+.right .number > div {
     background-color: var(--hot);
 }
 
-
-
 .middle {
     background-color: #000;
-    font-size: 4em;
+    font-size: 3em;
     border-right: 5px solid var(--secondary);
     border-left: 5px solid var(--secondary);
-    line-height: .9;
+    line-height: .8;
+    font-weight: 500;
     padding: 0 30px;
 }
 .middle div {
     margin: 10px;
 }
-
-.black {
-    color: var(--black);
-    text-align: right;
-}
-.red {
-    color: var(--red);
-    text-align: left;
-}
-.green {color: var(--green);}
+.middle > .black {text-align: right;}
+.middle > .red {text-align: left;}
 
 .bets {
     grid-column: 1 / span 3;
@@ -87,6 +86,10 @@ h4 {color: var(--secondary);}
     color: var(--black);
 }
 
+.no-more {
+    color: var(--red);
+}
+
 .footer {
     position: fixed;
     display: grid;
@@ -94,12 +97,53 @@ h4 {color: var(--secondary);}
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: var(--red);
-    color: white;
     text-align: center;
-  }
-
-#input {
-    margin: 0;
-    font-size: 42px;
+    font-weight: 600;
 }
+
+.footer > div:nth-child(-n+7) {
+    background-color: var(--text);
+    color: var(--bg);
+}
+
+.footer > div:nth-child(n+8) {
+    color: var(--text);
+}
+#red {background-color: var(--red);}
+#zero {background-color: var(--bg); color: var(--green);}
+#black {background-color: var(--black);}
+.black {color: var(--black)!important;}
+.red { color: var(--red)!important;}
+.green {color: var(--green)!important;}
+
+ /* Popup */
+ .jumbo {
+    font-size: 5em;
+    line-height: 0.9;
+    margin-top: -45px;
+}
+
+.small {
+    font-size: 0.4em;
+    color: var(--secondary);
+}
+ .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  .modal-content {
+    font-size: 5rem;
+    font-weight: 600;
+    background-color: var(--bg);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--secondary);
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
