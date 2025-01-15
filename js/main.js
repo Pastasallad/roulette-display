@@ -223,7 +223,8 @@ function saveSpins() {
 }
 
 function loadSpins() {
-    spins = JSON.parse(localStorage.getItem('spins'));
+    if (localStorage.getItem('spins') != null)
+        spins = JSON.parse(localStorage.getItem('spins'));
 }
 
 // Init
