@@ -3,7 +3,7 @@ const precachedResources = [
   '/index.html',
   '/css/style.css',
   '/js/main.js',
-  '/image/sbi-wings.svg'
+  '/image/sbi-casino.png'
 ];
 
 async function precache() {

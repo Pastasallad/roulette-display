@@ -259,6 +259,10 @@ function getColds() {
             thirdMaxI = i;
         }
     }
+    maxSpins = (maxSpins == Infinity) ? '&infin;' : maxSpins;
+    secMaxS = (secMaxS == Infinity) ? '&infin;' : secMaxS;
+    thirdMaxS = (thirdMaxS == Infinity) ? '&infin;' : thirdMaxS;
+
 
     /*console.log(maxIndex + ' in ' + maxSpins + ' spins.');
     console.log(secMaxI + ' in ' + secMaxS + ' spins.');

@@ -1,13 +1,13 @@
 :root {
     --orange: #FAB700;
-    --bg: #000;
-    --secondary: #555;
-    --text: #ffffffc4;
-    --red: #b10808;
-    --green: #028602;
-    --black: #d3c495;
-    --cold: #3333f5;
-    --hot: rgb(192, 54, 0);
+    --bg: #041529;
+    --secondary: #a99a6f;
+    --text: #705e2a;
+    --red: #690000;
+    --green: #006905;
+    --black: #a99a6f;
+    --cold: #a99a6f;
+    --hot: #690000;
 }
 
 body {
@@ -29,8 +29,8 @@ h1,h2,h3,h4,h5 {padding: 0; margin: 0;}
 h4 {color: var(--secondary);}
 
 .logo {
-    background: url('../image/sbi-wings.svg');
-    background-size: 100% 100%;
+    background: url('../image/sbi-casino.png');
+    background-size: auto 100%;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -68,13 +68,13 @@ h4 {color: var(--secondary);}
 }
 
 .middle {
-    background-color: #000;
     font-size: 3em;
     border-right: 5px solid var(--secondary);
     border-left: 5px solid var(--secondary);
     line-height: .8;
     font-weight: 500;
     padding: 0 30px;
+    background-color: #020b16;
 }
 .middle div {
     margin: 10px;
@@ -146,7 +146,7 @@ h4 {color: var(--secondary);}
     font-size: 5rem;
     font-weight: 600;
     background-color: var(--bg);
-    margin: 40% auto; /* Set height for popup */
+    margin: 50% auto; /* Set height for popup */
     padding: 20px;
     border: 1px solid var(--secondary);
     width: 80%; /* Could be more or less, depending on screen size */
