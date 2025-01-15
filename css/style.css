@@ -146,7 +146,7 @@ h4 {color: var(--secondary);}
     font-size: 5rem;
     font-weight: 600;
     background-color: var(--bg);
-    margin: 50% auto;
+    margin: 40% auto; /* Set height for popup */
     padding: 20px;
     border: 1px solid var(--secondary);
     width: 80%; /* Could be more or less, depending on screen size */
