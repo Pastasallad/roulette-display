@@ -1,9 +1,9 @@
-const cacheName = 'v2';
+const cacheName = 'v1';
 const precachedResources = [
   '/index.html',
   '/css/style.css',
   '/js/main.js',
-  '/image/logo.svg'
+  '/image/sbi-wings.svg'
 ];
 
 async function precache() {

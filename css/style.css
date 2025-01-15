@@ -28,20 +28,34 @@ h1,h2,h3,h4,h5 {padding: 0; margin: 0;}
 
 h4 {color: var(--secondary);}
 
+.logo {
+    background: url('../image/sbi-wings.svg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .left {
     place-content: end;
     color: var(--cold);
-    font-size: 3em;
 }
 
 .right {
     color: var(--hot);
-    font-size: 3em;
 }
 
-.cold, .hot {
-    font-size: 42px;
+.number {
+    background-color: var(--cold);
+    color: var(--bg);
+    font-size: 2em;
+    font-weight: 600;
 }
+
+.right .number {
+    background-color: var(--hot);
+}
+
+
 
 .middle {
     background-color: #000;
@@ -65,20 +79,22 @@ h4 {color: var(--secondary);}
 }
 .green {color: var(--green);}
 
-.no-more-bets {
-    font-size: 1.5em;
+.bets {
+    grid-column: 1 / span 3;
+    text-align: center;
+    font-size: 1.2em;
     font-weight: 600;
-    color: var(--red);
+    color: var(--black);
 }
 
 .footer {
     position: fixed;
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(7, 1fr);
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
+    background-color: var(--red);
     color: white;
     text-align: center;
   }
