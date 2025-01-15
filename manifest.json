@@ -1,7 +1,7 @@
 {
     "name": "Roulette Display",
-    "short_name": "RoDi",
-    "start_url": "/",
+    "short_name": "Roulette",
+    "start_url": "/roulette",
     "icons": [
       {
         "src": "image/favicon-96.png",
