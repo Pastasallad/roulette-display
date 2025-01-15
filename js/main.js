@@ -25,6 +25,21 @@ const black = document.getElementById('black');
 const low = document.getElementById('low');
 const high = document.getElementById('high');
 
+const c1 = document.getElementById('c1');
+const c2 = document.getElementById('c2');
+const c3 = document.getElementById('c3');
+const cs1 = document.getElementById('cs1');
+const cs2 = document.getElementById('cs2');
+const cs3 = document.getElementById('cs3');
+
+const h1 = document.getElementById('h1');
+const h2 = document.getElementById('h2');
+const h3 = document.getElementById('h3');
+const hs1 = document.getElementById('hs1');
+const hs2 = document.getElementById('hs2');
+const hs3 = document.getElementById('hs3');
+
+
 window.onkeydown = function(event){
     if (validInputs.includes(event.key)) {
         input(event.key);
@@ -105,6 +120,21 @@ function updateStats(st) {
     black.innerHTML = st['black'];
     low.innerHTML = st['low'];
     high.innerHTML = st['high'];
+
+    c1.innerHTML = st['cold'][0];
+    c2.innerHTML = st['cold'][1];
+    c3.innerHTML = st['cold'][2];
+    cs1.innerHTML = st['cold'][3];
+    cs2.innerHTML = st['cold'][4];
+    cs3.innerHTML = st['cold'][5];
+
+    h1.innerHTML = st['hot'][0];
+    h2.innerHTML = st['hot'][1];
+    h3.innerHTML = st['hot'][2];
+    hs1.innerHTML = st['hot'][3];
+    hs2.innerHTML = st['hot'][4];
+    hs3.innerHTML = st['hot'][5];
+
 }
 
 function getStats(s) {
@@ -116,10 +146,16 @@ function getStats(s) {
     let low = 0;
     let high = 0;
     let stat = [];
-    const tot = s.length;
+    const tot = (s.length > 1000) ? 1000 : s.length;
+
+    let numCount = [];
+    for (i = 0; i < 37; i++) {
+        numCount[i] = 0;
+    }
 
     // Count all stats
     for (i = 0; i < tot; i++) {
+        numCount[s[i]]++;
         if (s[i] == 0) {
             zero++;
             continue;
@@ -140,6 +176,7 @@ function getStats(s) {
         else
             low++;
     }
+
     
     stat['odd'] = toPercent(odd / tot);
     stat['even'] = toPercent(even / tot);
@@ -148,8 +185,86 @@ function getStats(s) {
     stat['black'] = toPercent(black / tot);
     stat['low'] = toPercent(low / tot);
     stat['high'] = toPercent(high / tot);
+    stat['cold'] = getColds();
+    stat['hot'] = getHots(numCount);
 
     return stat;
+}
+
+function getHots(n) {
+    let max = -1;
+    let maxI = 0;
+    let sMax = -1;
+    let sMaxI = 0;
+    let tMax = -1;
+    let tMaxI = 0;
+
+    for (i = 0; i < n.length; i++) {
+        //console.log(i + ':' + n[i]);
+        if (n[i] > max) {
+            tMax = sMax;
+            tMaxI = sMaxI;
+            sMax = max;
+            sMaxI = maxI;
+            max = n[i];
+            maxI = i;
+        } else if (n[i] > sMax) {
+            tMax = sMax;
+            tMaxI = sMaxI;
+            sMax = n[i];
+            sMaxI = i;
+        } else if (n[i] > tMax) {
+            tMax = n[i];
+            tMaxI = i;
+        }
+    }
+    /*console.log(maxI + ' : ' + max + ' spins.');
+    console.log(sMaxI + ' : ' + sMax + ' spins.');
+    console.log(tMaxI + ' : ' + tMax + ' spins.');*/
+    return [maxI,sMaxI,tMaxI,max,sMax,tMax];
+
+}
+
+// Get three coldest numbers and nr of spins since last win
+// nr1, nr2, nr3, spin1, spin2, spin3
+function getColds() {
+    let lastWin = [];
+
+    for (i = 0; i < 37; i++) {
+        let n = spins.indexOf(i);
+        lastWin[i] = (n == -1) ? Infinity : n;
+    }
+
+    let maxSpins = -1;
+    let maxIndex = 0;
+    let secMaxS = -1;
+    let secMaxI = 0;
+    let thirdMaxS = -1;
+    let thirdMaxI = 0;
+
+    for (i = 0; i <37; i++) {
+        if (lastWin[i] > maxSpins) {
+            thirdMaxS = secMaxS;
+            thirdMaxI = secMaxI;
+            secMaxS = maxSpins;
+            secMaxI = maxIndex;
+            maxSpins = lastWin[i];
+            maxIndex = i;
+        } else if (lastWin[i] > secMaxS) {
+            thirdMaxS = secMaxS;
+            thirdMaxI = secMaxI;
+            secMaxS = lastWin[i];
+            secMaxI = i;
+        } else if (lastWin[i] > thirdMaxS) {
+            thirdMaxS = lastWin[i];
+            thirdMaxI = i;
+        }
+    }
+
+    /*console.log(maxIndex + ' in ' + maxSpins + ' spins.');
+    console.log(secMaxI + ' in ' + secMaxS + ' spins.');
+    console.log(thirdMaxI + ' in ' + thirdMaxS + ' spins.');*/
+    return [maxIndex,secMaxI,thirdMaxI,maxSpins,secMaxS,thirdMaxS];
 }
 
 function toPercent(n) {
