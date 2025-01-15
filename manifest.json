@@ -1,0 +1,19 @@
+{
+    "name": "Roulette Display",
+    "short_name": "RoDi",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "image/favicon-96.png",
+        "sizes": "96x96"
+      },
+      {
+        "src": "image/icon-512.png",
+        "sizes": "512x512"
+      }
+    ],
+    "theme_color": "#000",
+    "background_color": "#000",
+    "display": "standalone",
+    "orientation": "portrait"
+}

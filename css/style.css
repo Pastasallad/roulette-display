@@ -1,0 +1,89 @@
+:root {
+    --orange: #FAB700;
+    --bg: #000;
+    --secondary: #555555;
+    --text: #fff;
+    --red: #b10808;
+    --green: #028602;
+    --black: #d3c495;
+    --cold: #3333f5;
+    --hot: rgb(192, 54, 0);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    font-size: 42px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0fr auto 0fr;
+    text-align: center;
+    gap: 5px;
+    padding: 5px;
+}
+
+h1,h2,h3,h4,h5 {padding: 0; margin: 0;}
+
+h4 {color: var(--secondary);}
+
+.left {
+    place-content: end;
+    color: var(--cold);
+    font-size: 3em;
+}
+
+.right {
+    color: var(--hot);
+    font-size: 3em;
+}
+
+.cold, .hot {
+    font-size: 42px;
+}
+
+.middle {
+    background-color: #000;
+    font-size: 4em;
+    border-right: 5px solid var(--secondary);
+    border-left: 5px solid var(--secondary);
+    line-height: .9;
+    padding: 0 30px;
+}
+.middle div {
+    margin: 10px;
+}
+
+.black {
+    color: var(--black);
+    text-align: right;
+}
+.red {
+    color: var(--red);
+    text-align: left;
+}
+.green {color: var(--green);}
+
+.no-more-bets {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--red);
+}
+
+.footer {
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+  }
+
+#input {
+    margin: 0;
+    font-size: 42px;
+}
