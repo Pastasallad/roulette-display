@@ -7,10 +7,10 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-const validInputs = ['0','1','2','3','4','5','6','7','8','9',',','Enter','+','-','*','/'];
+const validInputs = ['0','1','2','3','4','5','6','7','8','9',',','Enter','-'];
 const reds = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,31,32,34,36];
-const column1 = [1,4,7,10,13,16,19,22,25,28,31,34];
-const column2 = [2,5,8,11,14,17,20,23,26,29,32,35];
+/*const column1 = [1,4,7,10,13,16,19,22,25,28,31,34];
+const column2 = [2,5,8,11,14,17,20,23,26,29,32,35];*/
 let inputs = ['0'];
 let spins = [];
 
@@ -94,7 +94,6 @@ function moreBets() {
 function showPopup() {
     popup.style.display = 'block';
     popup.firstElementChild.innerHTML = numberFactsHtml(spins[0]);
-
 }
 
 function hidePopup() {
@@ -284,18 +283,18 @@ function numberToHtml(nr) {
 }
 
 function numberFactsHtml(nr) {
+    let out = '<div class="';
     if (nr == 0) {
-        return '<div class="green">GREEN<div class="jumbo">' + nr + '</div>ZERO</div>'
+        out += 'green">GREEN<div class="jumbo">' + nr + '</div>ZERO</div>'
     } else {
-        let out = '<div class="';
         out += (isRed(nr)) ? 'red">RED' : 'black">BLACK';
         out += '<div class="jumbo">' + nr + '</div>'
         out += (isEven(nr)) ? 'EVEN' : 'ODD';
         out += '<br>'
         out += (isHigh(nr)) ? 'HIGH' : 'LOW';
-        out += '<div class="small">SPIN #' + spins.length + '</div></div>';
-        return out;
     }
+    out += '<div class="small">SPIN #' + spins.length + '</div></div>';
+    return out;
 }
 
 function isRed(nr) {
