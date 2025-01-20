@@ -89,6 +89,16 @@ h4 {color: var(--secondary);}
     font-size: 1.2em;
     font-weight: 600;
     color: var(--black);
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+.refade {
+    animation-name: refade;
+    animation-duration: 1s;
+}
+@keyframes refade {
+    0%, 100% {opacity: 1;}
+    25%, 50% {opacity: 0;}
 }
 
 .no-more {
@@ -104,6 +114,8 @@ h4 {color: var(--secondary);}
     width: 100%;
     text-align: center;
     font-weight: 600;
+    z-index: 3;
+    background-color: var(--bg);
 }
 
 .footer > div:nth-child(-n+7) {
@@ -191,7 +203,7 @@ h4 {color: var(--secondary);}
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-fill-mode: forwards;
 }
 

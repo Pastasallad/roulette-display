@@ -9,10 +9,13 @@ if ('serviceWorker' in navigator) {
 
 const validInputs = ['0','1','2','3','4','5','6','7','8','9',',','Enter','-'];
 const reds = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
+const bonusRates = [40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,60,60,60,60,60,60,60,60,60,60,70,70,70,70,70,80,80,80,90,90,100];
 /*const column1 = [1,4,7,10,13,16,19,22,25,28,31,34];
 const column2 = [2,5,8,11,14,17,20,23,26,29,32,35];*/
 let inputs = ['0'];
 let spins = [];
+const bet = 'PLACE YOUR BETS';
+const noBet = 'NO MORE BETS';
 
 const recentSpins = document.getElementById('spins');
 const bets = document.getElementById('bets');
@@ -49,7 +52,13 @@ window.onkeydown = function(event){
 
 function input(key) {
     if (key == ',') {
-        noMoreBets();
+        if (bets.innerHTML == bet) {
+            noMoreBets();
+        } else if (popup.style.animationName == 'fade-in') {
+            return;
+        } else {
+            moreBets();
+        }
     } else if (key == 'Enter') {
         // Delete all
         if (inputs[2]+inputs[1]+inputs[0] == '---') {
@@ -71,7 +80,6 @@ function input(key) {
             }
         }
         inputs = ['0'];
-        //console.log(spins);
     }
     else {
         inputs.unshift(key);
@@ -79,21 +87,26 @@ function input(key) {
 }
 
 function noMoreBets() {
-    if (bets.innerHTML == 'NO MORE BETS') {
-        if (popup.style.animationName != 'fade-in')
-            moreBets();
-        else
-            return;
-    } else {
-        bets.classList.add('no-more');
-        bets.innerHTML = 'NO MORE BETS';
-        showBonus();
-    }
+    fadeOut(bets);
+    bets.innerHTML = noBet;
+    bets.classList.add('no-more');
+    fadeIn(bets);
+    showBonus();
+}
+
+function fadeOut(x) {
+    x.style.animationName = 'fade-out';
+}
+
+function fadeIn(x) {
+    x.style.animationName = 'fade-in';
 }
 
 function moreBets() {
+    fadeOut(bets);
+    bets.innerHTML = bet;
     bets.classList.remove('no-more');
-    bets.innerHTML = 'PLACE YOUR BETS';
+    fadeIn(bets);
     bonus.style.animationName = 'down';
 }
 
@@ -234,9 +247,6 @@ function getHots(n) {
             tMaxI = i;
         }
     }
-    /*console.log(maxI + ' : ' + max + ' spins.');
-    console.log(sMaxI + ' : ' + sMax + ' spins.');
-    console.log(tMaxI + ' : ' + tMax + ' spins.');*/
     return [maxI,sMaxI,tMaxI,max,sMax,tMax];
 
 }
@@ -280,10 +290,6 @@ function getColds() {
     secMaxS = (secMaxS == Infinity) ? '&infin;' : secMaxS;
     thirdMaxS = (thirdMaxS == Infinity) ? '&infin;' : thirdMaxS;
 
-
-    /*console.log(maxIndex + ' in ' + maxSpins + ' spins.');
-    console.log(secMaxI + ' in ' + secMaxS + ' spins.');
-    console.log(thirdMaxI + ' in ' + thirdMaxS + ' spins.');*/
     return [maxIndex,secMaxI,thirdMaxI,maxSpins,secMaxS,thirdMaxS];
 }
 
@@ -301,9 +307,9 @@ function getBonus() {
     return bonuses;
 }
 
-// Returns 40-120
+
 function getRate() {
-    return (getRandomNr(8) + 4) * 10;
+    return bonusRates[Math.floor(Math.random() * bonusRates.length)];
 }
 
 // Random nr between 0 and max (including)
