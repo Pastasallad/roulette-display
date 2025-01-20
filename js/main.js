@@ -84,14 +84,15 @@ function noMoreBets() {
     } else {
         bets.classList.add('no-more');
         bets.innerHTML = 'NO MORE BETS';
-        //bonus.style.display = 'block';
+        bonus.style.display = 'block';
+        showBonus();
     }
 }
 
 function moreBets() {
     bets.classList.remove('no-more');
     bets.innerHTML = 'PLACE YOUR BETS';
-    //bonus.style.display = 'none';
+    bonus.style.display = 'none';
 }
 
 function showPopup() {
@@ -101,7 +102,7 @@ function showPopup() {
 
 function hidePopup() {
     popup.style.display = 'none';
-    //bonus.style.display = 'none';
+    bonus.style.display = 'none';
     updateDisplay();
     moreBets();
 }
@@ -113,6 +114,16 @@ function updateDisplay() {
         recentSpins.innerHTML += numberToHtml(spins[i]);
     }
     updateStats(getStats(spins));
+}
+
+function showBonus() {
+    const bonuses = getBonus();
+    let out = '';
+    for (i = 0; i < bonuses.length; i++) {
+
+        out += '<div>' + bonuses[i] + '</div><div>' + getRate() + 'x</div>';
+    }
+    bonus.children[0].innerHTML = out;
 }
 
 function updateStats(st) {
@@ -137,7 +148,6 @@ function updateStats(st) {
     hs1.innerHTML = st['hot'][3];
     hs2.innerHTML = st['hot'][4];
     hs3.innerHTML = st['hot'][5];
-
 }
 
 function getStats(s) {
@@ -272,6 +282,30 @@ function getColds() {
     console.log(secMaxI + ' in ' + secMaxS + ' spins.');
     console.log(thirdMaxI + ' in ' + thirdMaxS + ' spins.');*/
     return [maxIndex,secMaxI,thirdMaxI,maxSpins,secMaxS,thirdMaxS];
+}
+
+// Returns 1-3 numbers 0-36
+function getBonus() {
+    let bonuses = [];
+    const nrOfBonuses = getRandomNr(2) + 1; //1-3
+
+    while (bonuses.length < nrOfBonuses) {
+        const nr = getRandomNr(36);
+        if (!bonuses.includes(nr))
+            bonuses.push(nr);
+    }
+
+    return bonuses;
+}
+
+// Returns 40-120
+function getRate() {
+    return (getRandomNr(8) + 4) * 10;
+}
+
+// Random nr between 0 and max (including)
+function getRandomNr(max) {
+    return Math.floor(Math.random() * (max+1));
 }
 
 function toPercent(n) {

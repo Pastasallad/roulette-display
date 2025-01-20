@@ -1,6 +1,7 @@
 :root {
     --orange: #FAB700;
     --bg: #041529;
+    --bg-darker: #020b16;
     --secondary: #a99a6f;
     --text: #705e2a;
     --red: #690000;
@@ -74,7 +75,7 @@ h4 {color: var(--secondary);}
     line-height: .8;
     font-weight: 500;
     padding: 0 30px;
-    background-color: #020b16;
+    background-color: var(--bg-darker);
 }
 .middle div {
     margin: 10px;
@@ -136,28 +137,46 @@ h4 {color: var(--secondary);}
 .bonus {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
   }
 .bonus-content {
-    margin: 100% 0 0 auto;
-    padding: 100px;
-    width: 15%;
+    position: fixed;
+    background: transparent url(../image/bonus330.png) no-repeat top center;
+    right:0;
+    bottom: 100px;
+    padding-top: 300px;
+    width: 353px;
     color: var(--bg);
-    font-size: 2.5em;
     font-weight: 600;
+    animation-name: bonus;
+    animation-duration: 5s;
+}
+@keyframes bonus {
+    from {bottom: -55%;}
+    to {bottom: 5%;}
 }
 
 .bonus-content > div {
+    margin: auto;
+    color: var(--text);
     width: 150px;
+}
+
+.bonus-content > div:nth-child(odd) {
     height: 150px;
     border-radius: 50%;
     background-color: var(--black);
-    color: var(--text);
-    margin-bottom: 50px;
+    font-size: 2.5em;
+}
+
+.bonus-content > div:nth-child(even) {
+    height: 50px;
+    border: 0px;
+    margin-bottom: 30px;
 }
 
 .modal {
@@ -182,5 +201,4 @@ h4 {color: var(--secondary);}
     border: 1px solid var(--secondary);
     width: 80%; /* Could be more or less, depending on screen size */
     transform: translate(-50%, -30%);
-
 }

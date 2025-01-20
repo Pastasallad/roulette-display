@@ -1,9 +1,10 @@
-const cacheName = 'v1';
+const cacheName = 'v2';
 const precachedResources = [
   '/index.html',
   '/css/style.css',
   '/js/main.js',
-  '/image/sbi-casino.png'
+  '/image/sbi-casino.png',
+  '/image/bonus330.png'
 ];
 
 async function precache() {
