@@ -60,7 +60,7 @@ function input(key) {
             spins.shift();
             updateDisplay();
         // Hide popup after showing
-        } else if (popup.style.display == 'block') {
+        } else if (popup.style.animationName == 'fade-in') {
             hidePopup();
         // Enter last number entered
         } else {
@@ -80,11 +80,13 @@ function input(key) {
 
 function noMoreBets() {
     if (bets.innerHTML == 'NO MORE BETS') {
-        moreBets();
+        if (popup.style.animationName != 'fade-in')
+            moreBets();
+        else
+            return;
     } else {
         bets.classList.add('no-more');
         bets.innerHTML = 'NO MORE BETS';
-        bonus.style.display = 'block';
         showBonus();
     }
 }
@@ -92,17 +94,17 @@ function noMoreBets() {
 function moreBets() {
     bets.classList.remove('no-more');
     bets.innerHTML = 'PLACE YOUR BETS';
-    bonus.style.display = 'none';
+    bonus.style.animationName = 'down';
 }
 
 function showPopup() {
-    popup.style.display = 'block';
+    popup.style.animationName = 'fade-in';
     popup.firstElementChild.innerHTML = numberFactsHtml(spins[0]);
 }
 
 function hidePopup() {
-    popup.style.display = 'none';
-    bonus.style.display = 'none';
+    popup.style.animationName = 'fade-out';
+    bonus.style.animationName = 'down';
     updateDisplay();
     moreBets();
 }
@@ -123,7 +125,8 @@ function showBonus() {
 
         out += '<div>' + bonuses[i] + '</div><div>' + getRate() + 'x</div>';
     }
-    bonus.children[0].innerHTML = out;
+    bonus.innerHTML = out;
+    bonus.style.animationName = 'up';
 }
 
 function updateStats(st) {
