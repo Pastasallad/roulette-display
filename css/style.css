@@ -89,16 +89,8 @@ h4 {color: var(--secondary);}
     font-size: 1.2em;
     font-weight: 600;
     color: var(--black);
-    animation-duration: 2s;
+    animation-duration: 1.5s;
     animation-fill-mode: forwards;
-}
-.refade {
-    animation-name: refade;
-    animation-duration: 1s;
-}
-@keyframes refade {
-    0%, 100% {opacity: 1;}
-    25%, 50% {opacity: 0;}
 }
 
 .no-more {

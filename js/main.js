@@ -88,10 +88,12 @@ function input(key) {
 
 function noMoreBets() {
     fadeOut(bets);
-    bets.innerHTML = noBet;
-    bets.classList.add('no-more');
-    fadeIn(bets);
     showBonus();
+    setTimeout(function() {
+        bets.classList.add('no-more');
+        bets.innerHTML = noBet;
+        fadeIn(bets);
+    }, 1600);
 }
 
 function fadeOut(x) {
@@ -104,10 +106,13 @@ function fadeIn(x) {
 
 function moreBets() {
     fadeOut(bets);
-    bets.innerHTML = bet;
-    bets.classList.remove('no-more');
-    fadeIn(bets);
     bonus.style.animationName = 'down';
+    setTimeout(function() {
+        bets.classList.remove('no-more');
+        bets.innerHTML = bet;
+        fadeIn(bets);
+    }, 1600);
+
 }
 
 function showPopup() {
