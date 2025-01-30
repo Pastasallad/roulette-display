@@ -14,6 +14,7 @@ const bonusRates = [40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,
 const column2 = [2,5,8,11,14,17,20,23,26,29,32,35];*/
 let inputs = ['0'];
 let spins = [];
+let activeBonuses = [];
 const bet = 'PLACE YOUR BETS';
 const noBet = 'NO MORE BETS';
 
@@ -43,6 +44,7 @@ const hs1 = document.getElementById('hs1');
 const hs2 = document.getElementById('hs2');
 const hs3 = document.getElementById('hs3');
 
+const bonusAudio = new Audio('sound/mo-money.ogg');
 
 window.onkeydown = function(event){
     if (validInputs.includes(event.key)) {
@@ -118,6 +120,10 @@ function moreBets() {
 function showPopup() {
     popup.style.animationName = 'fade-in';
     popup.firstElementChild.innerHTML = numberFactsHtml(spins[0]);
+
+    if (activeBonuses.includes(spins[0])) {
+        bonusAudio.play();
+    }
 }
 
 function hidePopup() {
@@ -138,6 +144,7 @@ function updateDisplay() {
 
 function showBonus() {
     const bonuses = getBonus();
+    activeBonuses = bonuses;
     let out = '';
     for (i = 0; i < bonuses.length; i++) {
 
