@@ -44,7 +44,7 @@ const hs1 = document.getElementById('hs1');
 const hs2 = document.getElementById('hs2');
 const hs3 = document.getElementById('hs3');
 
-const bonusAudio = new Audio('sound/MOREMONEY.mp3');
+const bonusAudio = new Audio('sound/moremoney.mp3');
 
 window.onkeydown = function(event){
     if (validInputs.includes(event.key)) {

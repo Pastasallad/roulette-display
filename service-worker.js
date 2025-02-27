@@ -1,9 +1,10 @@
-const cacheName = 'v3';
+const cacheName = 'v4';
 const precachedResources = [
   '/index.html',
   '/css/style.css',
   '/js/main.js',
   '/image/sbi-casino.png',
+  '/sound/moremoney.mp3',
   '/image/bonus330.png'
 ];
 
